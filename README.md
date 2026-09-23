@@ -28,6 +28,8 @@ npm run dev
 
 - Rendering: [Three.js](https://threejs.org/), MIT License
 - Astronomy: [Astronomy Engine](https://github.com/cosinekitty/astronomy), MIT License, Copyright © Don Cross
-- Production earth imagery: NASA / NASA Goddard Space Flight Center. NASAによる推薦を示すものではありません。
+- Earth imagery: [NASA Earth Observatory, Blue Marble](https://earthobservatory.nasa.gov/features/BlueMarble). NASAによる推薦を示すものではありません。
 
-同梱の `earth-day.svg` はオフライン開発用のスタイライズされた代替画像です。公開時には `public/textures/README.md` の案内に従い、利用するNASA Blue Marble素材と個別クレジットを確認してください。
+同梱の `earth-topography.svg` は、NASAの画像ホストへ接続できない場合だけ使用する
+オフライン用の代替画像です。素材とクレジットの詳細は `public/textures/README.md` を
+参照してください。
