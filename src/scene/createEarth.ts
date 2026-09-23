@@ -18,10 +18,11 @@ export function createEarth(): EarthObject {
   const material = new THREE.ShaderMaterial({ vertexShader, fragmentShader, uniforms })
   const mesh = new THREE.Mesh(new THREE.SphereGeometry(1, 128, 64), material)
   new THREE.TextureLoader().load(
-    `${import.meta.env.BASE_URL}textures/earth-day.svg`,
+    `${import.meta.env.BASE_URL}textures/earth-topography.svg`,
     texture => {
       texture.colorSpace = THREE.SRGBColorSpace
-      texture.anisotropy = 8
+      texture.anisotropy = 16
+      texture.minFilter = THREE.LinearMipmapLinearFilter
       uniforms.earthTexture.value = texture
       uniforms.textureLoaded.value = true
     },
