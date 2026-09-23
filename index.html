@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#02070f" />
+    <meta name="description" content="日時ごとの地球の日照を体験できる3Dシミュレーター" />
+    <title>Earth Sunlight Simulator</title>
+  </head>
+  <body>
+    <main id="app">
+      <div id="scene" aria-label="3D地球。ドラッグで回転、スクロールまたはピンチでズームできます"></div>
+      <header class="brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <div><h1>Earth <span>Sunlight</span></h1><p>DAYLIGHT VISUALIZER</p></div>
+      </header>
+      <section class="status-card glass" aria-live="polite">
+        <div class="eyebrow"><span class="pulse"></span><span id="mode-label">LIVE POSITION</span></div>
+        <time id="local-time">—</time>
+        <span id="date-label">—</span>
+        <div class="status-divider"></div>
+        <div class="coordinates">
+          <div><span>太陽直下点</span><strong id="latitude">—</strong><small>LATITUDE</small></div>
+          <div><span>&nbsp;</span><strong id="longitude">—</strong><small>LONGITUDE</small></div>
+        </div>
+        <p id="utc-time">UTC —</p>
+      </section>
+      <button id="panel-toggle" class="mobile-toggle" aria-expanded="true" aria-controls="control-panel">時間を設定 <span>⌄</span></button>
+      <aside id="control-panel" class="control-panel glass open">
+        <div class="panel-heading"><div><p class="eyebrow">TIME CONTROL</p><h2>日照を探索する</h2></div><button id="now-button" class="live-button"><span class="pulse"></span>現在時刻</button></div>
+        <div class="mode-switch" role="group" aria-label="時刻モード">
+          <button data-mode="realtime" class="active">リアルタイム</button><button data-mode="fixed">日時を指定</button>
+        </div>
+        <div class="datetime-row">
+          <label>日付<input id="date-input" type="date" /></label>
+          <label>時刻<input id="time-input" type="time" step="1" /></label>
+          <label>タイムゾーン<select id="timezone-input"><option value="local">ローカル</option><option value="utc">UTC</option></select></label>
+        </div>
+        <div class="step-buttons" aria-label="時間を調整">
+          <button data-step="-86400000">−1日</button><button data-step="-3600000">−1時間</button><button data-step="-600000">−10分</button>
+          <button data-step="600000">+10分</button><button data-step="3600000">+1時間</button><button data-step="86400000">+1日</button>
+        </div>
+        <div class="overlays">
+          <span>表示レイヤー</span>
+          <label><input id="equator-toggle" type="checkbox" /><i></i>赤道</label>
+          <label><input id="grid-toggle" type="checkbox" /><i></i>グリッド</label>
+          <label><input id="terminator-toggle" type="checkbox" checked /><i></i>境界線</label>
+          <label><input id="sun-toggle" type="checkbox" /><i></i>太陽方向</label>
+        </div>
+        <p id="sun-note" class="sun-note" hidden>※ 太陽までの距離は模式表示です</p>
+        <p id="error" class="error" role="alert"></p>
+      </aside>
+      <div class="hint"><span>↔</span> DRAG TO ROTATE&nbsp;&nbsp;·&nbsp;&nbsp;SCROLL TO ZOOM</div>
+      <footer>EARTH IMAGERY: <strong>NASA</strong> <span>·</span> ASTRONOMY ENGINE</footer>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
