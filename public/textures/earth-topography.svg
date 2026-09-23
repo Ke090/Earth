@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="4096" height="2048" viewBox="0 0 2048 1024">
+  <defs>
+    <radialGradient id="ocean" cx="50%" cy="45%" r="72%">
+      <stop stop-color="#17658a"/><stop offset=".55" stop-color="#0b466d"/><stop offset="1" stop-color="#062c50"/>
+    </radialGradient>
+    <linearGradient id="land" x2="0" y2="1"><stop stop-color="#6f8f58"/><stop offset=".52" stop-color="#568052"/><stop offset="1" stop-color="#6d8752"/></linearGradient>
+    <linearGradient id="ice" x2="0" y2="1"><stop stop-color="#f4faf9"/><stop offset="1" stop-color="#aacbd0"/></linearGradient>
+    <filter id="texture" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency=".012 .028" numOctaves="4" seed="21" result="noise"/>
+      <feColorMatrix in="noise" values=".22 0 0 0 .28 0 .25 0 0 .25 0 0 .2 0 .2 0 0 0 .34 0" result="grain"/>
+      <feBlend in="SourceGraphic" in2="grain" mode="soft-light"/>
+    </filter>
+    <filter id="ridge"><feGaussianBlur stdDeviation="1.3"/></filter>
+  </defs>
+  <rect width="2048" height="1024" fill="url(#ocean)"/>
+  <g opacity=".22" fill="none" stroke="#5db2ca" stroke-width="1">
+    <path d="M0 180Q410 205 820 178T1640 180T2048 174M0 835Q420 816 820 840T1640 836T2048 842"/>
+    <path d="M0 490Q300 475 600 496T1200 492T1800 486T2048 490"/>
+  </g>
+  <!-- Coastlines traced in an equirectangular physical-map projection. -->
+  <g fill="url(#land)" stroke="#a8b886" stroke-width="2.4" stroke-linejoin="round" filter="url(#texture)">
+    <!-- North America -->
+    <path d="M20 214L57 177 110 158 151 126 218 109 279 114 319 143 353 146 389 173 430 169 475 196 500 233 484 260 447 263 424 287 386 282 367 304 337 308 319 335 292 347 282 382 254 401 225 390 202 365 170 356 146 324 112 317 91 286 54 268 31 242zM332 326l32 15 19 33-21 27-25-19-18-32z"/>
+    <!-- Central America -->
+    <path d="M282 382l29 2 31 28 22 7 19 32 37 19-10 17-36-10-28-26-31-11-23-31z"/>
+    <!-- Greenland -->
+    <path d="M416 103l49-40 73 1 55 33-6 54-35 66-42 43-54-17-27-59z" fill="url(#ice)"/>
+    <!-- South America -->
+    <path d="M407 474l48-23 69 6 56 34 30 47-3 54-25 35-9 66-32 66-20 72-39 81-31-22-10-66-31-55-17-72-23-50 4-53-24-55 15-38z"/>
+    <!-- Europe and Asia -->
+    <path d="M887 250l25-36 47-16 35 12 34-23 49 17 41-11 35 17 68-17 58 9 64-18 74 16 55-8 50 18 70 5 42 29 52 10 36 33 72 22 67 53 40 48-18 47-57 18-27 40-59 1-42-27-43 5-38 32-48-2-37-27-46 10-30 34-48-1-26-38-37 4-31 36-39 8-33-25-43 6-31-25-48 5-30-31-37 13-28-30-37 14-43-22-11-39-35-19 20-32-16-35 32-24 3-32z"/>
+    <!-- Scandinavia, Britain, Japan and SE Asia islands -->
+    <path d="M1006 198l20-57 38-41 27 19-8 59-31 47zM890 270l-13-45 22-31 17 39zM862 277l-18-29 7-35 19 17zM1760 407l13-38 15-41 12 26-15 56-12 25zM1608 510l27 10 13 34 26 13-12 26-38-17-25-38zM1690 551l36 30 5 35-22 18-18-43z"/>
+    <!-- Africa -->
+    <path d="M1014 407l62-33 82 1 65 31 45 60-4 73-33 47-25 76-48 74-46 22-39-49-20-81-30-59-42-48-1-60z"/>
+    <!-- Arabia / India -->
+    <path d="M1260 439l57 1 44 48-8 58-48-17-42-47zM1380 438l58 15 37 52-20 76-32 62-28-41 4-64-35-49z"/>
+    <!-- Australia, New Guinea and New Zealand -->
+    <path d="M1671 666l51-41 79-11 73 26 56 57-10 72-65 56-91 14-72-46-34-70zM1772 594l42-25 59 13 20 24-49 5-42 19zM1941 806l17-22 15 25-19 42-19 22-8-20z"/>
+    <!-- Antarctica -->
+    <path d="M0 928l73-15 78 9 74-22 94 16 84-13 79 20 95-12 89 16 105-13 94 12 79-17 101 17 88-14 99 13 80-16 94 16 90-12 95 17 83-15 82 14 91-6v105H0z" fill="url(#ice)"/>
+  </g>
+  <!-- Deserts and broad biomes -->
+  <g opacity=".72" fill="#c6a967">
+    <path d="M1001 431q111-58 228 2l25 74-52 44-100-18-86-43z"/><path d="M1265 447l70 3 26 45-29 31-59-26z"/>
+    <path d="M1450 327q125-48 234 18l-21 71-91 15-87-36z"/><path d="M1687 678q93-65 196 12l6 71-105 49-90-49z"/>
+    <path d="M242 319l57-32 48 27-27 42-57 21z"/><path d="M490 692l49-12 31 48-44 85-34-40z"/>
+  </g>
+  <g opacity=".55" fill="#315f45">
+    <path d="M377 488q95-45 187 30l17 87-64 65-109-45-28-78z"/><path d="M1050 557q84-47 161 12l-22 96-69 64-55-58z"/>
+    <path d="M118 238q124-63 240 5l-30 66-134 33-82-46z"/><path d="M1138 250q216-72 431 1l-48 74-283 29z"/>
+  </g>
+  <!-- Major mountain chains: Rockies, Andes, Atlas, Alps, Himalaya, Great Dividing Range. -->
+  <g fill="none" stroke="#e4ddbd" stroke-linecap="round" opacity=".72" filter="url(#ridge)">
+    <path d="M169 217q48 70 91 151" stroke-width="12"/><path d="M431 495q35 171 50 335" stroke-width="11"/>
+    <path d="M1011 431q46-30 95-12" stroke-width="8"/><path d="M933 319q61 20 106 2" stroke-width="7"/>
+    <path d="M1377 425q91-21 204 35" stroke-width="15"/><path d="M1819 660q33 47 49 111" stroke-width="9"/>
+  </g>
+  <g fill="none" stroke="#7c704d" stroke-linecap="round" opacity=".9">
+    <path d="M169 217q48 70 91 151M431 495q35 171 50 335M1011 431q46-30 95-12M933 319q61 20 106 2M1377 425q91-21 204 35M1819 660q33 47 49 111" stroke-width="3"/>
+  </g>
+  <!-- Polar sea ice gives the poles a natural, irregular edge. -->
+  <path d="M0 0h2048v70l-74 10-80-17-93 19-101-13-87 17-111-18-106 16-89-15-109 19-98-20-104 16-90-14-111 18-91-19-105 13-103-17-92 16-99-15L0 78z" fill="url(#ice)" opacity=".92"/>
+</svg>
