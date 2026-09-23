@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { createAtmosphere } from './createAtmosphere'
+import { createClouds } from './createClouds'
 import { createEarth } from './createEarth'
 import { createGrid } from './createGrid'
 
@@ -11,9 +12,12 @@ export function createScene(container: HTMLElement) {
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' })
   renderer.setPixelRatio(Math.min(devicePixelRatio, 2))
   renderer.outputColorSpace = THREE.SRGBColorSpace
+  renderer.toneMapping = THREE.ACESFilmicToneMapping
+  renderer.toneMappingExposure = 1.08
   container.append(renderer.domElement)
   const earth = createEarth()
-  scene.add(earth.mesh, createAtmosphere())
+  const clouds = createClouds()
+  scene.add(earth.mesh, clouds.mesh, createAtmosphere())
   const { grid, equator } = createGrid()
   scene.add(grid, equator)
   const sunArrow = new THREE.Group()
@@ -33,6 +37,7 @@ export function createScene(container: HTMLElement) {
 
   function setSunDirection(direction: THREE.Vector3) {
     earth.setSunDirection(direction)
+    clouds.setSunDirection(direction)
     arrow.setDirection(direction)
     sun.position.copy(direction).multiplyScalar(1.72)
   }
