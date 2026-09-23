@@ -9,7 +9,20 @@ npm install
 npm run dev
 ```
 
-本番ビルドは `npm run build`、テストは `npm test` で実行します。GitHub Pagesではリポジトリの **Settings → Pages → Source** を GitHub Actions に設定してください。
+本番ビルドは `npm run build`、テストは `npm test` で実行します。
+
+## GitHub Pages への公開
+
+このリポジトリには、Viteでアプリをビルドして `dist` を公開するワークフロー
+（`.github/workflows/deploy.yml`）が含まれています。
+
+1. リポジトリの **Settings → Pages** を開く
+2. **Build and deployment → Source** で **GitHub Actions** を選ぶ
+3. `main` ブランチへpushするか、**Actions → Deploy to GitHub Pages → Run workflow** を実行する
+
+公開対象にリポジトリのソース一式（`.`）を直接指定すると、Viteによる依存関係の
+バンドルが行われず、3D表示が起動しません。Pagesには必ずビルド後の `dist` を
+デプロイしてください。
 
 ## ライセンスとクレジット
 
